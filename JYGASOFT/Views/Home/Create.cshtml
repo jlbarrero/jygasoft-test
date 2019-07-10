@@ -1,0 +1,77 @@
+﻿@model JYGASOFT.Models.Deudor
+
+@{
+    ViewBag.Title = "Adicionar Deudor";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+
+@using (Html.BeginForm())
+{
+    @Html.AntiForgeryToken()
+
+    <div class="form-horizontal">
+        <h4>Nuevo Deudor</h4>
+        <hr />
+        @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+        <div class="row">
+            <div class="col-4">
+                <div class="form-group">
+                    @Html.EditorFor(model => model.nombre, new { htmlAttributes = new { @class = "form-control", placeholder = "Nombre" } })
+                    @Html.ValidationMessageFor(model => model.nombre, "", new { @class = "text-danger" })
+                </div>
+                <div class="form-group">
+                    @Html.EditorFor(model => model.telef, new { htmlAttributes = new { @class = "form-control", placeholder = "Teléfono" } })
+                    @Html.ValidationMessageFor(model => model.telef, "", new { @class = "text-danger" })
+                </div>
+                <div class="form-group">
+                    @Html.EditorFor(model => model.dia_c, new { htmlAttributes = new { @class = "form-control", placeholder = "Día del Cobro" } })
+                    @Html.ValidationMessageFor(model => model.dia_c, "", new { @class = "text-danger" })
+                </div>
+                <div class="form-group">
+                    @Html.EditorFor(model => model.intereses, new { htmlAttributes = new { @class = "form-control", placeholder = "Intereses" } })
+                    @Html.ValidationMessageFor(model => model.intereses, "", new { @class = "text-danger" })
+                </div>
+            </div>
+            <div class="col-4">
+                <div class="form-group">
+                    @Html.EditorFor(model => model.apell_pat, new { htmlAttributes = new { @class = "form-control", placeholder = "Apellido Paterno" } })
+                    @Html.ValidationMessageFor(model => model.apell_pat, "", new { @class = "text-danger" })
+                </div>
+                <div class="form-group">
+                    @Html.EditorFor(model => model.email, new { htmlAttributes = new { @class = "form-control", placeholder = "email" } })
+                    @Html.ValidationMessageFor(model => model.email, "", new { @class = "text-danger" })
+                </div>
+                <div class="form-group">
+                    @Html.EditorFor(model => model.meses_p, new { htmlAttributes = new { @class = "form-control", placeholder = "Meses de préstamo" } })
+                    @Html.ValidationMessageFor(model => model.meses_p, "", new { @class = "text-danger" })
+                </div>
+            </div>
+            <div class="col-4">
+                <div class="form-group">
+                    @Html.EditorFor(model => model.apell_mat, new { htmlAttributes = new { @class = "form-control", placeholder = "Apellido Materno" } })
+                    @Html.ValidationMessageFor(model => model.apell_mat, "", new { @class = "text-danger" })
+                </div>
+
+                <div class="form-group">
+                    @Html.EditorFor(model => model.fecha_p, new { htmlAttributes = new { @class = "form-control date-inputmask", placeholder = "Fecha de pago" } })
+                    @Html.ValidationMessageFor(model => model.fecha_p, "", new { @class = "text-danger" })
+                </div>
+                <div class="form-group">
+                    @Html.EditorFor(model => model.cant_p, new { htmlAttributes = new { @class = "form-control", placeholder = "Cantidad prestada" } })
+                    @Html.ValidationMessageFor(model => model.cant_p, "", new { @class = "text-danger" })
+                </div>
+            </div>
+        </div>
+        <div class="form-group">
+            <div class="col-md-offset-2 col-md-10 md-center-tabs">
+                <input type="submit" value="Guardar" class="btn btn-rounded btn-primary" />
+                @Html.ActionLink("Cancelar", "Index", new { }, new { @class="btn btn-rounded btn-secondary"})
+            </div>
+        </div>
+    </div>
+}
+
+<div>
+    
+</div>

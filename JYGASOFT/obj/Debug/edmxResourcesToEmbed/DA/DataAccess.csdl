@@ -1,0 +1,50 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Schema Namespace="PrestamosModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+  <EntityType Name="Deudor">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="Int32" Nullable="false" />
+    <Property Name="nombre" Type="String" MaxLength="150" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="apell_pat" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="apell_mat" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="cant_p" Type="Decimal" Precision="6" Scale="2" Nullable="false" />
+    <Property Name="telef" Type="String" MaxLength="32" FixedLength="false" Unicode="true" />
+    <Property Name="email" Type="String" MaxLength="200" FixedLength="true" Unicode="true" />
+    <Property Name="fecha_p" Type="DateTime" Nullable="false" Precision="0" />
+    <Property Name="dia_c" Type="Int16" Nullable="false" />
+    <Property Name="meses_p" Type="Int32" Nullable="false" />
+    <Property Name="intereses" Type="Int16" Nullable="false" />
+    <NavigationProperty Name="Pago" Relationship="Self.FK_Pago_Persona" FromRole="Deudor" ToRole="Pago" />
+  </EntityType>
+  <EntityType Name="Pago">
+    <Key>
+      <PropertyRef Name="id" />
+    </Key>
+    <Property Name="id" Type="Guid" Nullable="false" />
+    <Property Name="id_persona" Type="Int32" />
+    <Property Name="cantidad" Type="Decimal" Precision="6" Scale="2" />
+    <Property Name="fecha" Type="DateTime" Nullable="false" Precision="0" />
+    <NavigationProperty Name="Deudor" Relationship="Self.FK_Pago_Persona" FromRole="Pago" ToRole="Deudor" />
+  </EntityType>
+  <Association Name="FK_Pago_Persona">
+    <End Role="Deudor" Type="Self.Deudor" Multiplicity="0..1" />
+    <End Role="Pago" Type="Self.Pago" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Deudor">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="Pago">
+        <PropertyRef Name="id_persona" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <EntityContainer Name="PrestamoEntities" annotation:LazyLoadingEnabled="true">
+    <EntitySet Name="Deudor" EntityType="Self.Deudor" />
+    <EntitySet Name="Pago" EntityType="Self.Pago" />
+    <AssociationSet Name="FK_Pago_Persona" Association="Self.FK_Pago_Persona">
+      <End Role="Deudor" EntitySet="Deudor" />
+      <End Role="Pago" EntitySet="Pago" />
+    </AssociationSet>
+  </EntityContainer>
+</Schema>

@@ -1,0 +1,49 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Schema Namespace="PrestamosModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+  <EntityType Name="Deudor">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="nombre" Type="nvarchar" MaxLength="150" Nullable="false" />
+    <Property Name="apell_pat" Type="nvarchar" MaxLength="50" Nullable="false" />
+    <Property Name="apell_mat" Type="nvarchar" MaxLength="50" Nullable="false" />
+    <Property Name="cant_p" Type="decimal" Precision="6" Scale="2" Nullable="false" />
+    <Property Name="telef" Type="nvarchar" MaxLength="32" />
+    <Property Name="email" Type="nchar" MaxLength="200" />
+    <Property Name="fecha_p" Type="date" Nullable="false" />
+    <Property Name="dia_c" Type="int" Nullable="false" />
+    <Property Name="meses_p" Type="int" Nullable="false" />
+    <Property Name="intereses" Type="int" Nullable="false" />
+  </EntityType>
+  <EntityType Name="Pago">
+    <Key>
+      <PropertyRef Name="id" />
+    </Key>
+    <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="id_deudor" Type="int" />
+    <Property Name="cantidad" Type="decimal" Precision="6" Scale="2" />
+    <Property Name="fecha" Type="date" Nullable="false" />
+    <Property Name="interes" Type="bit" />
+  </EntityType>
+  <Association Name="FK_Pago_Deudor">
+    <End Role="Deudor" Type="Self.Deudor" Multiplicity="0..1" />
+    <End Role="Pago" Type="Self.Pago" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Deudor">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="Pago">
+        <PropertyRef Name="id_deudor" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <EntityContainer Name="PrestamosModelStoreContainer">
+    <EntitySet Name="Deudor" EntityType="Self.Deudor" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="Pago" EntityType="Self.Pago" Schema="dbo" store:Type="Tables" />
+    <AssociationSet Name="FK_Pago_Deudor" Association="Self.FK_Pago_Deudor">
+      <End Role="Deudor" EntitySet="Deudor" />
+      <End Role="Pago" EntitySet="Pago" />
+    </AssociationSet>
+  </EntityContainer>
+</Schema>

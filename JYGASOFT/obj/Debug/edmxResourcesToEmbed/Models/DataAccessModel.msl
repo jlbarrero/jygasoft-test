@@ -1,0 +1,33 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+  <EntityContainerMapping StorageEntityContainer="PrestamosModelStoreContainer" CdmEntityContainer="PrestamosEntities">
+    <EntitySetMapping Name="Deudor">
+      <EntityTypeMapping TypeName="PrestamosModel.Deudor">
+        <MappingFragment StoreEntitySet="Deudor">
+          <ScalarProperty Name="Id" ColumnName="Id" />
+          <ScalarProperty Name="nombre" ColumnName="nombre" />
+          <ScalarProperty Name="apell_pat" ColumnName="apell_pat" />
+          <ScalarProperty Name="apell_mat" ColumnName="apell_mat" />
+          <ScalarProperty Name="cant_p" ColumnName="cant_p" />
+          <ScalarProperty Name="telef" ColumnName="telef" />
+          <ScalarProperty Name="email" ColumnName="email" />
+          <ScalarProperty Name="fecha_p" ColumnName="fecha_p" />
+          <ScalarProperty Name="dia_c" ColumnName="dia_c" />
+          <ScalarProperty Name="meses_p" ColumnName="meses_p" />
+          <ScalarProperty Name="intereses" ColumnName="intereses" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Pago">
+      <EntityTypeMapping TypeName="PrestamosModel.Pago">
+        <MappingFragment StoreEntitySet="Pago">
+          <ScalarProperty Name="id" ColumnName="id" />
+          <ScalarProperty Name="id_deudor" ColumnName="id_deudor" />
+          <ScalarProperty Name="cantidad" ColumnName="cantidad" />
+          <ScalarProperty Name="fecha" ColumnName="fecha" />
+          <ScalarProperty Name="interes" ColumnName="interes" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+  </EntityContainerMapping>
+</Mapping>

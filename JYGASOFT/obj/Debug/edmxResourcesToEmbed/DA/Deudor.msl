@@ -1,0 +1,22 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+  <EntityContainerMapping StorageEntityContainer="PrestamosModelStoreContainer" CdmEntityContainer="DeudorEntity">
+    <EntitySetMapping Name="Deudor">
+      <EntityTypeMapping TypeName="PrestamosModel.Deudor">
+        <MappingFragment StoreEntitySet="Deudor">
+          <ScalarProperty Name="Id" ColumnName="Id" />
+          <ScalarProperty Name="nombre" ColumnName="nombre" />
+          <ScalarProperty Name="apell_pat" ColumnName="apell_pat" />
+          <ScalarProperty Name="apell_mat" ColumnName="apell_mat" />
+          <ScalarProperty Name="cant_p" ColumnName="cant_p" />
+          <ScalarProperty Name="telef" ColumnName="telef" />
+          <ScalarProperty Name="email" ColumnName="email" />
+          <ScalarProperty Name="fecha_p" ColumnName="fecha_p" />
+          <ScalarProperty Name="dia_c" ColumnName="dia_c" />
+          <ScalarProperty Name="meses_p" ColumnName="meses_p" />
+          <ScalarProperty Name="intereses" ColumnName="intereses" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+  </EntityContainerMapping>
+</Mapping>
